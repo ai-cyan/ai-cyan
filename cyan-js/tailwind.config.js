@@ -28,6 +28,20 @@ module.exports = {
           purple: '#9333EA',
           blue: '#3B82F6',
         }
+      },
+      keyframes: {
+        'slow-move': {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(-5%)' }
+        },
+        'slow-move-reverse': {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(5%)' }
+        }
+      },
+      animation: {
+        'slow-move': 'slow-move 8s ease-in-out infinite',
+        'slow-move-reverse': 'slow-move-reverse 8s ease-in-out infinite'
       }
     },
   },
