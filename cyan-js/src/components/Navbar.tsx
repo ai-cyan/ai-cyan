@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,17 +26,20 @@ export function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <motion.div 
-          className="text-2xl font-bold gradient-text"
-          whileHover={{ scale: 1.05 }}
-        >
-          Cyan
-        </motion.div>
+        <Link to="/">
+          <motion.div 
+            className="text-2xl font-bold gradient-text"
+            whileHover={{ scale: 1.05 }}
+          >
+            Cyan
+          </motion.div>
+        </Link>
         
         <div className="hidden md:flex items-center space-x-8">
-          <NavLink href="#features">Features</NavLink>
-          <NavLink href="#jobs">Jobs</NavLink>
-          <NavLink href="#about">About</NavLink>
+          <NavLink to="/features">Features</NavLink>
+          <NavLink to="/pricing">Pricing</NavLink>
+          <NavLink to="/jobs">Jobs</NavLink>
+          <NavLink to="/about">About</NavLink>
           <motion.button
             onClick={toggleTheme}
             whileHover={{ scale: 1.05 }}
@@ -85,15 +88,15 @@ export function Navbar() {
   );
 }
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
   return (
-    <motion.a
-      href={href}
-      className="dark:text-gray-300 text-gray-600 hover:text-text transition-colors"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      {children}
-    </motion.a>
+    <Link to={to}>
+      <motion.span 
+        className="text-sm text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+        whileHover={{ y: -2 }}
+      >
+        {children}
+      </motion.span>
+    </Link>
   );
 } 
