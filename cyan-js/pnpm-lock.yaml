@@ -14,6 +14,9 @@ importers:
       cyan-wasm:
         specifier: file:../crates/cyan-wasm/pkg
         version: file:../crates/cyan-wasm/pkg
+      date-fns:
+        specifier: ^4.1.0
+        version: 4.1.0
       framer-motion:
         specifier: ^11.0.0
         version: 11.13.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -664,6 +667,9 @@ packages:
 
   cyan-wasm@file:../crates/cyan-wasm/pkg:
     resolution: {directory: ../crates/cyan-wasm/pkg, type: directory}
+
+  date-fns@4.1.0:
+    resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
 
   debug@4.3.7:
     resolution: {integrity: sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==}
@@ -1829,6 +1835,8 @@ snapshots:
   csstype@3.1.3: {}
 
   cyan-wasm@file:../crates/cyan-wasm/pkg: {}
+
+  date-fns@4.1.0: {}
 
   debug@4.3.7:
     dependencies:
