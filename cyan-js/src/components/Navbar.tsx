@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
+import { useNavigate } from 'react-router-dom';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -17,7 +19,7 @@ export function Navbar() {
   return (
     <motion.nav 
       className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-colors duration-200 ${
-        isScrolled ? 'dark:bg-black/80 bg-white/80 backdrop-blur-sm' : 'bg-transparent'
+        isScrolled ? 'dark:bg-background-dark/80 bg-white/80 backdrop-blur-sm' : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -25,7 +27,7 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <motion.div 
-          className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600"
+          className="text-2xl font-bold gradient-text"
           whileHover={{ scale: 1.05 }}
         >
           Cyan
@@ -64,9 +66,10 @@ export function Navbar() {
             )}
           </motion.button>
           <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(0,102,255,0.3)" }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium"
+            className="theme-button px-4 py-2 rounded-full text-sm font-medium"
+            onClick={() => navigate('/signin')}
           >
             Sign In
           </motion.button>

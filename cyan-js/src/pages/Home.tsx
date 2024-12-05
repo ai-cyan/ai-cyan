@@ -26,7 +26,7 @@ export default function Home() {
           className="text-center max-w-4xl px-4"
         >
           <motion.h1 
-            className="text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600"
+            className="text-7xl font-bold mb-6 gradient-text"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -34,7 +34,7 @@ export default function Home() {
             The World's Cleanest Remote Platform
           </motion.h1>
           <motion.p 
-            className="text-xl dark:text-gray-400 text-gray-600 mb-8"
+            className="text-xl dark:text-gray-300 text-gray-600 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -47,9 +47,12 @@ export default function Home() {
             transition={{ delay: 0.6 }}
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0,102,255,0.3)" }}
+              whileHover={{ 
+                scale: 1.05, 
+                boxShadow: "0 0 30px rgba(200,200,200,0.2)" 
+              }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-medium"
+              className="theme-button px-8 py-4 rounded-full text-lg font-medium"
             >
               Get Started
             </motion.button>
@@ -58,11 +61,11 @@ export default function Home() {
 
         {/* Background Animation */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent dark:to-black to-white" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent dark:to-background-dark to-white" />
           <motion.div 
             className="absolute inset-0"
             style={{
-              background: "radial-gradient(circle at center, rgba(0,102,255,0.1) 0%, transparent 70%)",
+              background: "radial-gradient(circle at center, rgba(60,70,255,0.1) 0%, transparent 70%)",
             }}
             animate={{
               scale: [1, 1.1, 1],

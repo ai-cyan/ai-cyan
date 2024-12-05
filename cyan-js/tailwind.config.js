@@ -12,13 +12,21 @@ module.exports = {
       colors: {
         background: {
           DEFAULT: 'var(--background)',
-          dark: '#000000',
+          dark: '#0A0A0A',
           light: '#ffffff',
         },
         text: {
           DEFAULT: 'var(--text)',
           dark: '#ffffff',
           light: '#000000',
+        },
+        primary: {
+          DEFAULT: '#3C46FF',
+          hover: '#2832FF',
+        },
+        accent: {
+          purple: '#9333EA',
+          blue: '#3B82F6',
         }
       }
     },
