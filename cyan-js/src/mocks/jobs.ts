@@ -13,12 +13,18 @@ const generateMockJob = (id: number): Job => {
     Math.random() > 0.5 ? 'fulltime' : 'remote'
   ])];
 
+  const descriptions = [
+    'We are looking for a talented developer to join our team. You will be responsible for developing and maintaining high-performance applications.',
+    'Join our innovative team to build next-generation solutions. We offer competitive compensation and excellent benefits.',
+    'Help us shape the future of technology. We are seeking a passionate developer to contribute to our growing platform.'
+  ];
+
   return {
     id: id.toString(),
     companyName: companies[Math.floor(Math.random() * companies.length)],
     position: positions[Math.floor(Math.random() * positions.length)],
     tags: randomTags,
-    description: 'Building innovative solutions with cutting-edge technologies',
+    description: descriptions[Math.floor(Math.random() * descriptions.length)],
     applicants: Math.floor(Math.random() * 100) + 10,
     saves: Math.floor(Math.random() * 200) + 50,
     updatedAt: new Date(Date.now() - Math.floor(Math.random() * 10) * 24 * 60 * 60 * 1000).toISOString(),

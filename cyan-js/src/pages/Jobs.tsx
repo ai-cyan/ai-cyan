@@ -5,6 +5,7 @@ import { Navbar } from '../components/Navbar';
 import { mockJobs } from '../mocks/jobs';
 import { formatDistanceToNow } from 'date-fns';
 import { Job } from '../types/job';
+import { useNavigate } from 'react-router-dom';
 
 export default function Jobs() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -138,6 +139,7 @@ export default function Jobs() {
 }
 
 function JobCard({ job }: { job: Job }) {
+  const navigate = useNavigate();
   const formatSalary = (min: number, max: number, currency: string) => {
     const formatter = new Intl.NumberFormat('en-US', {
       notation: 'compact',
@@ -152,49 +154,67 @@ function JobCard({ job }: { job: Job }) {
 
   return (
     <motion.div
+      onClick={() => navigate(`/jobs/${job.id}`)}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="p-6 border dark:border-gray-800 rounded-lg hover:border-gray-400 dark:hover:border-gray-700 transition-colors"
+      whileHover={{ scale: 1.02 }}
+      className="p-6 border dark:border-gray-800 rounded-lg hover:border-gray-400 dark:hover:border-gray-700 transition-colors cursor-pointer relative group"
     >
-      <div className="flex items-center justify-between">
-        <div>
-          <h3 className="text-xl font-semibold hover:text-primary transition-colors">
-            {job.companyName}
-          </h3>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">
-            {job.position}
-          </p>
+      <div className="flex flex-col h-full">
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-xl font-semibold hover:text-primary transition-colors">
+              {job.companyName}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 mt-1">
+              {job.position}
+            </p>
+          </div>
+          <div className="flex items-center space-x-4 text-sm text-gray-500">
+            <span>{job.applicants} applicants</span>
+            <span>{job.saves} saves</span>
+            <span>
+              Updated {formatDistanceToNow(new Date(job.updatedAt))} ago
+            </span>
+          </div>
         </div>
-        <div className="flex items-center space-x-4 text-sm text-gray-500">
-          <span>{job.applicants} applicants</span>
-          <span>{job.saves} saves</span>
-          <span>
-            Updated {formatDistanceToNow(new Date(job.updatedAt))} ago
-          </span>
-        </div>
-      </div>
-      
-      <p className="mt-4 text-gray-600 dark:text-gray-400">
-        {job.description}
-      </p>
-      
-      <div className="mt-4 flex items-center flex-wrap gap-2">
-        {/* 先显示技术标签 */}
-        {techTags.map(tag => (
-          <span
-            key={tag}
-            className="inline-flex items-center px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800"
-          >
-            {tag}
-          </span>
-        ))}
         
-        {/* 最后显示薪资标签 */}
-        {salaryTag && (
-          <span className="inline-flex items-center px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800">
-            {formatSalary(job.salary.min, job.salary.max, job.salary.currency)}
-          </span>
-        )}
+        <p className="mt-4 text-gray-600 dark:text-gray-400">
+          {job.description}
+        </p>
+        
+        <div className="mt-4 flex items-center justify-between">
+          <div className="flex items-center flex-wrap gap-2">
+            {techTags.map(tag => (
+              <span
+                key={tag}
+                className="inline-flex items-center px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800"
+              >
+                {tag}
+              </span>
+            ))}
+            
+            {salaryTag && (
+              <span className="inline-flex items-center px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800">
+                {formatSalary(job.salary.min, job.salary.max, job.salary.currency)}
+              </span>
+            )}
+          </div>
+
+          <motion.button
+            onClick={(e) => {
+              e.stopPropagation();
+              // TODO: 处理申请逻辑
+            }}
+            className="opacity-0 group-hover:opacity-100 transition-all duration-200 ml-4 flex-shrink-0"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="inline-flex items-center px-6 py-2 rounded-full bg-red-500 hover:bg-red-600 text-white font-medium shadow-md hover:shadow-lg transition-all">
+              Apply
+            </span>
+          </motion.button>
+        </div>
       </div>
     </motion.div>
   );
