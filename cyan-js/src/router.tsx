@@ -7,6 +7,7 @@ import SignUp from './pages/SignUp';
 import Pricing from './pages/Pricing';
 import Jobs from './pages/Jobs';
 import JobDetail from './pages/JobDetail';
+import Profile from './pages/Profile';
 
 const routes: RouteObject[] = [
   {
@@ -36,6 +37,10 @@ const routes: RouteObject[] = [
   {
     path: '/jobs/:id',
     element: <JobDetail />,
+  },
+  {
+    path: '/:username',
+    element: <Profile />,
   },
 ];
 
