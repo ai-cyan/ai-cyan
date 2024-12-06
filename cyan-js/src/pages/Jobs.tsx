@@ -42,7 +42,7 @@ export default function Jobs() {
               whileTap={{ scale: 0.98 }}
             >
               <div className="flex items-center space-x-1">
-                <span>🔥</span>
+                <span></span>
                 <span>Best Jobs</span>
               </div>
             </motion.button>
@@ -53,7 +53,7 @@ export default function Jobs() {
               whileTap={{ scale: 0.98 }}
             >
               <div className="flex items-center space-x-1">
-                <span>🔍</span>
+                <span></span>
                 <span>Categories</span>
               </div>
             </motion.button>
@@ -64,9 +64,9 @@ export default function Jobs() {
               whileTap={{ scale: 0.98 }}
             >
               <div className="flex items-center space-x-1">
-                <span>🌟</span>
+                <span></span>
                 <span>Cyanstars</span>
-                <span className="inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full ml-1">
+                <span className="inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-medium bg-primary/10 text-gray-400 rounded-full ml-1">
                   New
                 </span>
               </div>
