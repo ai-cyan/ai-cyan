@@ -128,7 +128,7 @@ export default function JobDetail() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full py-3 px-4 bg-primary hover:bg-primary-hover text-white rounded-lg font-medium relative overflow-hidden group"
+                  className="w-full py-3 px-4 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium relative overflow-hidden group"
                 >
                   <span className="relative z-10">Apply Now</span>
                   <motion.div
