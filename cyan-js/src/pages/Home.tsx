@@ -16,31 +16,32 @@ export default function Home() {
       
       {/* Hero Section */}
       <motion.section 
-        className="relative h-screen flex items-center justify-center"
+        className="relative min-h-screen"
         style={{ opacity, scale }}
       >
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-4xl px-4"
+          className="text-center max-w-[90rem] px-4 mx-auto pt-[16vh]"
         >
           <motion.h1 
-            className="text-7xl font-bold mb-6 gradient-text"
+            className="text-[6.5rem] font-bold mb-4 gradient-text whitespace-nowrap tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            The World's Cleanest Remote Platform
+            The AI Remote Job Board
           </motion.h1>
-          <motion.p 
-            className="text-xl dark:text-gray-300 text-gray-600 mb-8"
+          <motion.div 
+            className="text-xl dark:text-gray-300 text-gray-600 mb-8 space-y-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            Connect with global talents and opportunities
-          </motion.p>
+            <p>Built to redefine remote work possibilities.</p>
+            <p>Cyan is the best way to find your next remote role.</p>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
