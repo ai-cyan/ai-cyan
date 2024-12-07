@@ -27,7 +27,7 @@ const mockUsers: Record<string, User> = {
     },
     quota: {
       postJob: {
-        used: 4,
+        used: 0,
         limit: 5
       },
       findJob: {
@@ -237,17 +237,24 @@ export default function Profile() {
                   <div className="flex justify-between items-center mb-2">
                     <div className="flex items-center justify-between flex-1 mr-4">
                       <span className="text-sm">Find Job</span>
-                      <span className="text-sm">3 / No Limit</span>
+                      <span className="text-sm">
+                        {currentUser.quota.findJob.used} / {currentUser.quota.findJob.limit === null ? 'No Limit' : currentUser.quota.findJob.limit}
+                      </span>
                     </div>
                     <button className="px-3 py-1 text-xs bg-transparent border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 rounded-md hover:border-gray-300 dark:hover:border-gray-700 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
                       Manage
                     </button>
                   </div>
                   <div className="h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-green-500 rounded-full" style={{ width: '30%' }} />
+                    <div 
+                      className="h-full bg-green-500 rounded-full" 
+                      style={{ 
+                        width: currentUser.quota.findJob.limit === null ? '100%' : `${(currentUser.quota.findJob.used / currentUser.quota.findJob.limit) * 100}%` 
+                      }} 
+                    />
                   </div>
                   <p className="text-sm text-gray-500 mt-2">
-                    You've used 3 applications. You have no monthly quota.
+                    You've used {currentUser.quota.findJob.used} applications. You have no monthly quota.
                   </p>
                 </div>
               </div>

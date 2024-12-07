@@ -8,6 +8,7 @@ import Pricing from './pages/Pricing';
 import Jobs from './pages/Jobs';
 import JobDetail from './pages/JobDetail';
 import Profile from './pages/Profile';
+import UserOverview from './pages/UserOverview';
 
 const routes: RouteObject[] = [
   {
@@ -41,6 +42,10 @@ const routes: RouteObject[] = [
   {
     path: '/:username',
     element: <Profile />,
+  },
+  {
+    path: '/:username/overview',
+    element: <UserOverview />,
   },
 ];
 
