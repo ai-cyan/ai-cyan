@@ -10,10 +10,13 @@ export function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50"
     >
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-[90rem] mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold gradient-text">
+          <Link 
+            to="/" 
+            className="text-2xl font-bold bg-gradient-to-r from-gray-200 to-gray-400 bg-clip-text text-transparent"
+          >
             Cyan
           </Link>
 
