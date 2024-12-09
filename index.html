@@ -1,9 +1,22 @@
-<script>
-  (function() {
-    const redirect = sessionStorage.redirect;
-    delete sessionStorage.redirect;
-    if (redirect && redirect !== location.href) {
-      history.replaceState(null, null, redirect);
-    }
-  })();
-</script> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyan</title>
+  <script type="module" crossorigin src="/cyan-js/assets/index-Cmm9lN1I.js"></script>
+  <link rel="stylesheet" crossorigin href="/cyan-js/assets/index-6yxoHRec.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    (function() {
+      const redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect !== location.href) {
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
+</body>
+</html> 
