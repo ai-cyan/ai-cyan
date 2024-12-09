@@ -1,8 +1,8 @@
 import typescript from '@rollup/plugin-typescript';
-import { wasm } from '@rollup/plugin-wasm';
-import postcss from 'rollup-plugin-postcss';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
+import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import postcss from 'rollup-plugin-postcss';
+import wasm from '@rollup/plugin-wasm';
 
 export default {
   input: 'src/index.ts',
@@ -12,24 +12,24 @@ export default {
     sourcemap: true
   },
   plugins: [
-    typescript({
-      tsconfig: './tsconfig.json',
+    resolve({
+      browser: true
     }),
-    wasm({
-      targetEnv: 'auto'
+    commonjs(),
+    typescript({
+      tsconfig: './tsconfig.json'
     }),
     postcss({
       config: {
-        path: './postcss.config.js',
+        path: './postcss.config.cjs'
       },
       extensions: ['.css'],
       minimize: true,
       inject: {
-        insertAt: 'top',
-      },
+        insertAt: 'top'
+      }
     }),
-    nodeResolve(),
-    commonjs()
+    wasm()
   ],
-  external: ['cyan-wasm', 'react', 'react-dom', 'framer-motion']
+  external: ['react', 'react-dom']
 }; 

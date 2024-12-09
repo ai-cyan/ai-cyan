@@ -4,14 +4,25 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  root: './src',
-  publicDir: '../public',
+  base: '/cyan-js/',
   build: {
-    outDir: '../dist',
+    outDir: 'dist',
+    sourcemap: true,
+    rollupOptions: {
+      external: ['react', 'react-dom'],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM'
+        }
+      }
+    }
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
+      '@': path.resolve(__dirname, 'src')
+    }
   },
+  root: '.',
+  publicDir: 'public'
 }); 

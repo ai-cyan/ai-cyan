@@ -22,16 +22,34 @@ export function Navbar() {
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/features" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+            <Link 
+              to="/ruanyf/overview" 
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
+              Overview
+            </Link>
+            <Link 
+              to="/features" 
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
               Features
             </Link>
-            <Link to="/pricing" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+            <Link 
+              to="/pricing" 
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
               Pricing
             </Link>
-            <Link to="/jobs" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+            <Link 
+              to="/jobs" 
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
               Jobs
             </Link>
-            <Link to="/forum" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+            <Link 
+              to="/forum" 
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
               Forum
             </Link>
           </div>
@@ -41,12 +59,12 @@ export function Navbar() {
             <ThemeToggle />
             <Link
               to="/signin"
-              className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 border-gray-700 dark:border-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
             >
               Sign in
             </Link>
             <Link
-              to="/post-job"
+              to="/new"
               className="px-4 py-2 text-sm font-medium bg-gray-800 dark:bg-white text-white dark:text-gray-900 border border-gray-200 dark:border-gray-700 hover:bg-gray-700 dark:hover:bg-gray-50 rounded-lg transition-colors shadow-sm"
             >
               POST A JOB

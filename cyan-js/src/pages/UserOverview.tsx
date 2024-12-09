@@ -86,13 +86,13 @@ export default function UserOverview() {
   const { username } = useParams();
 
   return (
-    <div className="min-h-screen bg-[#1A1B31] text-white">
+    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
       <Navbar />
       <MouseFollower />
 
       <div className="max-w-[90rem] mx-auto px-4 pt-20">
         {/* Header Section */}
-        <div className="bg-[#1A1B31] rounded-lg p-6 border border-[#2A2B45]">
+        <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6 border border-gray-200 dark:border-gray-800">
           <div className="flex items-center gap-6">
             <div className="w-24 h-24 bg-[#2A2B45] rounded-lg overflow-hidden">
               <img 
@@ -148,7 +148,7 @@ export default function UserOverview() {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-6 mt-6">
           {/* GitHub Stats */}
-          <div className="bg-[#1A1B31] rounded-lg p-6 border border-[#2A2B45]">
+          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6 border border-gray-200 dark:border-gray-800">
             <h2 className="text-xl font-bold mb-6">GITHUB STATS</h2>
             <div className="grid grid-cols-2 gap-6">
               <StatsBlock 
@@ -191,7 +191,7 @@ export default function UserOverview() {
           </div>
 
           {/* Language Stats */}
-          <div className="bg-[#1A1B31] rounded-lg p-6 border border-[#2A2B45]">
+          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6 border border-gray-200 dark:border-gray-800">
             <h2 className="text-xl font-bold mb-6">LANGUAGE PROFICIENCY</h2>
             <div className="space-y-4">
               {mockUserStats.languageComparison.map((lang) => (
@@ -216,26 +216,26 @@ export default function UserOverview() {
 
         {/* 在 Stats Grid 后添加新的技能验证部分 */}
         <div className="mt-6">
-          <div className="bg-[#1A1B31] rounded-lg p-6">
+          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6 border border-gray-200 dark:border-gray-800">
             <h2 className="text-xl font-bold mb-6">VERIFIED SKILLS</h2>
             
             {/* Technical Skills */}
             <div className="mb-8">
-              <h3 className="text-sm text-gray-400 mb-4">TECHNICAL SKILLS</h3>
+              <h3 className="text-sm text-gray-500 dark:text-gray-400 mb-4">TECHNICAL SKILLS</h3>
               <div className="grid grid-cols-2 gap-6">
                 {mockUserStats.verifiedSkills.technical.map(skill => (
                   <div 
                     key={skill.name}
-                    className="bg-[#1A1B31] rounded-lg p-4"
+                    className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700"
                   >
                     <div className="flex justify-between items-start mb-3">
                       <div>
                         <div className="text-lg font-bold">{skill.name}</div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-gray-500 dark:text-gray-400">
                           Level {skill.level} • Verified {skill.lastVerified}
                         </div>
                       </div>
-                      <div className="bg-green-500/10 text-green-400 text-xs px-2 py-1 rounded">
+                      <div className="bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs px-2 py-1 rounded">
                         Verified
                       </div>
                     </div>
@@ -246,13 +246,13 @@ export default function UserOverview() {
                           key={v.type}
                           className="flex justify-between text-sm"
                         >
-                          <span className="text-gray-400">{v.type}</span>
-                          <span>{v.details}</span>
+                          <span className="text-gray-500 dark:text-gray-400">{v.type}</span>
+                          <span className="text-gray-700 dark:text-gray-300">{v.details}</span>
                         </div>
                       ))}
                     </div>
                     
-                    <div className="mt-3 pt-3 border-t border-gray-700/50 text-xs text-gray-500">
+                    <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700 text-xs text-gray-500 dark:text-gray-400">
                       <div className="flex items-center gap-1">
                         <span>Blockchain Verified:</span>
                         <span className="font-mono">{skill.blockchainProof}</span>
@@ -265,21 +265,21 @@ export default function UserOverview() {
             
             {/* Soft Skills */}
             <div>
-              <h3 className="text-sm text-gray-400 mb-4">SOFT SKILLS</h3>
+              <h3 className="text-sm text-gray-500 dark:text-gray-400 mb-4">SOFT SKILLS</h3>
               <div className="grid grid-cols-2 gap-6">
                 {mockUserStats.verifiedSkills.soft.map(skill => (
                   <div 
                     key={skill.name}
-                    className="bg-[#1A1B31] rounded-lg p-4"
+                    className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700"
                   >
                     <div className="flex justify-between items-start mb-3">
                       <div>
                         <div className="text-lg font-bold">{skill.name}</div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-gray-500 dark:text-gray-400">
                           Level {skill.level} • Verified {skill.lastVerified}
                         </div>
                       </div>
-                      <div className="bg-green-500/10 text-green-400 text-xs px-2 py-1 rounded">
+                      <div className="bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs px-2 py-1 rounded">
                         Verified
                       </div>
                     </div>
@@ -290,13 +290,13 @@ export default function UserOverview() {
                           key={v.type}
                           className="flex justify-between text-sm"
                         >
-                          <span className="text-gray-400">{v.type}</span>
-                          <span>{v.details}</span>
+                          <span className="text-gray-500 dark:text-gray-400">{v.type}</span>
+                          <span className="text-gray-700 dark:text-gray-300">{v.details}</span>
                         </div>
                       ))}
                     </div>
                     
-                    <div className="mt-3 pt-3 border-t border-gray-700/50 text-xs text-gray-500">
+                    <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700 text-xs text-gray-500 dark:text-gray-400">
                       <div className="flex items-center gap-1">
                         <span>Blockchain Verified:</span>
                         <span className="font-mono">{skill.blockchainProof}</span>
@@ -322,17 +322,17 @@ interface StatsBlockProps {
 
 function StatsBlock({ value, label, average, total }: StatsBlockProps) {
   return (
-    <div className="bg-[#2A2B45] rounded-lg p-4 hover:bg-[#2A2B45]/80 transition-colors">
+    <div className="bg-white dark:bg-gray-800 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border border-gray-200 dark:border-gray-700">
       <div className="text-2xl font-bold mb-2">{value}</div>
-      <div className="text-sm text-gray-400 mb-3">{label}</div>
+      <div className="text-sm text-gray-500 dark:text-gray-400 mb-3">{label}</div>
       <div className="text-xs space-y-1">
-        <div className="flex justify-between text-gray-500">
+        <div className="flex justify-between text-gray-500 dark:text-gray-400">
           <span>AVG PER DAY</span>
-          <span className="text-gray-400">{average}</span>
+          <span>{average}</span>
         </div>
-        <div className="flex justify-between text-gray-500">
+        <div className="flex justify-between text-gray-500 dark:text-gray-400">
           <span>LIFETIME</span>
-          <span className="text-gray-400">{total}</span>
+          <span>{total}</span>
         </div>
       </div>
     </div>

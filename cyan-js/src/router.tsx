@@ -9,6 +9,7 @@ import Jobs from './pages/Jobs';
 import JobDetail from './pages/JobDetail';
 import Profile from './pages/Profile';
 import UserOverview from './pages/UserOverview';
+import PostJob from './pages/PostJob';
 
 const routes: RouteObject[] = [
   {
@@ -47,6 +48,12 @@ const routes: RouteObject[] = [
     path: '/:username/overview',
     element: <UserOverview />,
   },
+  {
+    path: '/new',
+    element: <PostJob />,
+  },
 ];
 
-export const router: ReturnType<typeof createBrowserRouter> = createBrowserRouter(routes); 
+export const router: ReturnType<typeof createBrowserRouter> = createBrowserRouter(routes, {
+  basename: '/cyan-js'
+}); 
