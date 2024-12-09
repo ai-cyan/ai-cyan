@@ -1,0 +1,6 @@
+/target
+/cyan-js/node_modules
+/cyan-js/dist
+**/*.rs.bk
+Cargo.lock
+.env
