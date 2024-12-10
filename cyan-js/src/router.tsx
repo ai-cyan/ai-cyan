@@ -55,5 +55,5 @@ const routes: RouteObject[] = [
 ];
 
 export const router: ReturnType<typeof createBrowserRouter> = createBrowserRouter(routes, {
-  basename: '/cyan-js'
+  basename: '/ai-cyan'
 }); 
