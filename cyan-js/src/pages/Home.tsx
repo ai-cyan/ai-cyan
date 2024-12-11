@@ -30,7 +30,7 @@ export default function Home() {
           className="text-center max-w-[90rem] px-4 mx-auto pt-[16vh]"
         >
           <motion.h1 
-            className="text-[6.5rem] font-bold mb-4 gradient-text whitespace-nowrap tracking-tight"
+            className="text-[clamp(2.5rem,10vw,6.5rem)] font-bold mb-4 gradient-text tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -50,7 +50,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="flex items-center justify-center space-x-4"
+            className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4"
           >
             <motion.button
               whileHover={{ 
@@ -108,12 +108,12 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           {/* Search and Filter Bar */}
           <motion.div 
-            className="flex flex-wrap items-center justify-between gap-4 mb-8"
+            className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
             {/* Left side - Search and Categories */}
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-wrap items-center gap-2">
 
                 <motion.button
                 className="px-4 py-2.5 relative font-medium text-gray-600 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-500 transition-colors"
@@ -153,8 +153,8 @@ export default function Home() {
             </div>
 
             {/* Right side - Sort options */}
-            <div className="flex items-center">
-              <select className="px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-sm border-none outline-none">
+            <div className="w-full sm:w-auto">
+              <select className="w-full sm:w-auto px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-sm border-none outline-none">
                 <option value="recent">Most Recent</option>
                 <option value="relevant">Most Relevant</option>
                 <option value="salary">Highest Salary</option>
@@ -197,16 +197,16 @@ function JobCard({ job }: { job: Job }) {
       className="p-6 border dark:border-gray-800 rounded-lg hover:border-gray-400 dark:hover:border-gray-700 transition-colors cursor-pointer relative group"
     >
       <div className="flex flex-col h-full">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
           <div>
-            <h3 className="text-xl font-semibold hover:text-primary transition-colors">
+            <h3 className="text-lg sm:text-xl font-semibold hover:text-primary transition-colors">
               {job.companyName}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mt-1">
               {job.position}
             </p>
           </div>
-          <div className="flex items-center space-x-4 text-sm text-gray-500">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm text-gray-500 mt-2 sm:mt-0">
             <span>{job.applicants} applicants</span>
             <span>{job.saves} saves</span>
             <span>

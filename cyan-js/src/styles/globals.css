@@ -34,3 +34,28 @@
     @apply transition-colors duration-200;
   }
 } 
+
+/* 添加以下全局样式 */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* 移动端基础字体大小调整 */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* 确保图片和视频不会溢出容器 */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+} 

@@ -42,7 +42,15 @@ module.exports = {
       animation: {
         'slow-move': 'slow-move 8s ease-in-out infinite',
         'slow-move-reverse': 'slow-move-reverse 8s ease-in-out infinite'
-      }
+      },
+      screens: {
+        'xs': '375px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
     },
   },
   plugins: [],
