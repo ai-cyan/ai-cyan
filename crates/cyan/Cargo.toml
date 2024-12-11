@@ -3,13 +3,39 @@ name = "cyan"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "cyan"
+path = "src/main.rs"
+
 [dependencies]
-tokio.workspace = true
-axum.workspace = true
-tower-http.workspace = true
-serde.workspace = true
-serde_json.workspace = true
-tracing.workspace = true
-tracing-subscriber.workspace = true
-sqlx.workspace = true
+tokio = { workspace = true, features = ["full", "macros"] }
+axum = { version = "0.7", features = ["macros"] }
+tower-http = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "postgres", "uuid", "macros", "chrono"] }
+
+# 本地依赖
 cyan-internal = { path = "../cyan-internal" }
+
+# 认证相关
+jsonwebtoken = "9.2"
+argon2 = { version = "0.5", features = ["std"] }
+
+# 工具
+dotenv = "0.15"
+config = "0.13"
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.7", features = ["v4", "serde"] }
+axum-extra = { version = "0.9", features = ["typed-header"] }
+
+[dev-dependencies]
+tower = { version = "0.4", features = ["util"] }
+hyper = { version = "1.0", features = ["full"] }
+dotenv = "0.15"
+tokio = { workspace = true, features = ["macros", "rt", "test-util"] }
