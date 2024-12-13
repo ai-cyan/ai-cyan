@@ -1,32 +1,30 @@
-// 技能验证API
-use crate::AppState;
-use axum::{extract::State, Json, Router};
-use cyan_internal::{
-    crdt::DeltaRope,
-    domain::skill::{Skill, Verification},
-};
+// crates/cyan/src/api/skills.rs
+pub async fn verify_skill(
+    State(state): State<Arc<AppState>>,
+    Json(payload): Json<SkillVerification>,
+) -> Result<Json<VerificationResponse>> {
+    let op = Operation::SkillVerify {
+        skill_id: payload.skill_id,
+        verifier: payload.verifier_id,
+        status: payload.status,
+        timestamp: Utc::now(),
+    };
 
-pub fn router() -> Router<AppState> {
-    Router::new()
-        .route("/skills", get(list_skills))
-        .route("/skills/:id/verify", post(verify_skill))
+    state.apply_operation(op).await?;
+
+    Ok(Json(VerificationResponse::new()))
 }
 
-async fn list_skills(State(state): State<AppState>) -> Json<Vec<Skill>> {
-    let skills = state.skill_store.get_all().await.unwrap_or_default();
-
-    Json(skills)
+// crates/cyan/src/state.rs
+pub struct AppState {
+    store: Store,
+    rope: DeltaRope,
 }
 
-async fn verify_skill(
-    State(state): State<AppState>,
-    Path(skill_id): Path<Uuid>,
-    Json(verification): Json<Verification>,
-) -> StatusCode {
-    state
-        .skill_store
-        .verify_skill(skill_id, verification)
-        .await
-        .map(|_| StatusCode::OK)
-        .unwrap_or(StatusCode::INTERNAL_SERVER_ERROR)
+impl AppState {
+    pub async fn apply_operation(&self, op: Operation) -> Result<()> {
+        self.rope.apply(op.clone())?;
+        self.store.append(op).await?;
+        Ok(())
+    }
 }
