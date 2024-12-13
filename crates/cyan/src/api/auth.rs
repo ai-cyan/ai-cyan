@@ -1,20 +1,44 @@
-// 认证相关API
-use crate::models::user::CreateUser;
+// 认证API
+
+use axum::{
+    Router,
+    extract::{State, Json},
+    http::StatusCode,
+};
+use serde::{Deserialize, Serialize};
 use crate::AppState;
-use axum::{http::StatusCode, routing::post, Json, Router};
+
+#[derive(Debug, Deserialize)]
+pub struct SignupRequest {
+    email: String,
+    password: String,
+    name: String,
+}
+
+#[derive(Debug, Serialize)]
+pub struct AuthResponse {
+    token: String,
+    user: User,
+}
 
 pub fn router() -> Router<AppState> {
     Router::new()
-        .route("/register", post(register))
-        .route("/login", post(login))
+        .route("/signup", post(signup))
+        .route("/signin", post(signin))
 }
 
-async fn register(Json(payload): Json<CreateUser>) -> Result<StatusCode, StatusCode> {
-    // TODO: 实现注册逻辑
-    Ok(StatusCode::CREATED)
-}
+async fn signup(
+    State(state): State<AppState>,
+    Json(req): Json<SignupRequest>,
+) -> Result<Json<AuthResponse>, StatusCode> {
+    let user = state.auth_service
+        .register(req.email, req.password, req.name)
+        .await
+        .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
 
-async fn login() -> Result<StatusCode, StatusCode> {
-    // TODO: 实现登录逻辑
-    Ok(StatusCode::OK)
+    let token = state.auth_service
+        .generate_token(user.id, user.email.clone(), "user".to_string())
+        .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
+
+    Ok(Json(AuthResponse { token, user }))
 }
